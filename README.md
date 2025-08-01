@@ -128,7 +128,7 @@ Each block consists of:
 
 ### Final Project Requirements
 
-Students build comprehensive full-stack applications covering all 8 blocks. Detailed requirements and guidelines available in [docs/final-project/](docs/final-project/).
+Students build comprehensive full-stack applications covering all 8 blocks. Detailed requirements and guidelines available in [docs/final-project/final-project-guidelines.md](docs/final-project/final-project-guidelines.md).
 
 ### Fast-Track Completion  
 
@@ -165,7 +165,7 @@ Students can pass the full course by completing a comprehensive project covering
 
 ## 🗂 Workflow
 
-**Full pipeline documentation with screenshots available in [docs/submission/](docs/submission/)**
+**Full pipeline documentation with screenshots available in [docs/submission/CONTRIBUTING.md](docs/submission/CONTRIBUTING.md)**
 
 ### Overview
 1. **Setup**: Fork repository, clone locally, add upstream remote
@@ -184,7 +184,7 @@ Students can pass the full course by completing a comprehensive project covering
 
 ## 👥 Peer Review
 
-**Detailed guidelines and assignments available in [docs/peer-review/](docs/peer-review/)**
+**Detailed guidelines and assignments available in [docs/peer-review/peer-review-guidelines.md](docs/peer-review/peer-review-guidelines.md)**
 
 ### Overview
 1. **Assignment**: Check peer review table for your assigned students (2 per lab)
@@ -245,6 +245,24 @@ sum25-go-flutter-course/
 ├── Makefile                   # Common development tasks
 └── README.md                  # This file
 ```
+
+---
+
+## 🔄 Course Improvement Summary
+
+### 🎯 Key Takeaways for Future Improvements
+
+- **Pacing & Time Management**: The most frequent feedback was the need for better time distribution and more realistic deadlines.
+- **Course Organization**: Start earlier and maintain a consistent schedule throughout the semester.
+- **Material Depth**: Strive for a balance between comprehensive coverage and a digestible learning pace.
+- **GitHub Workflow**: This was a highlight for many—will definitely keep and further enhance this aspect!
+
+### 🔄 Immediate Improvements for Next Iteration
+
+- **Time Management & Scheduling**: Adopt a more realistic schedule, extending the course from 1 month to 2 months, with only 1 lecture per week.
+- **Structured Progression**: Implement a clearer progression from basics to advanced topics, potentially dividing into two tracks: beginners and progressing students.
+- **Unified Lab Theme**: All lab tasks will follow a single theme, with each topic building step-by-step on the previous one.
+- **Stable CI/CD & Requirements**: All CI/CD pipelines will be tested in advance, and deadlines/requirements will remain unchanged after publication.
 
 ---
 
