@@ -295,7 +295,7 @@ func TestListTasks(t *testing.T) {
 
 			// Verify that filtered tasks match the filter criteria
 			if tt.filter != nil {
-				for _, task := range tasks {
+				for _, task := range tasks { 
 					if task.Done != *tt.filter {
 						t.Errorf("Task %d has Done=%v, expected %v", task.ID, task.Done, *tt.filter)
 					}
