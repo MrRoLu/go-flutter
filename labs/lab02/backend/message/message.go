@@ -19,7 +19,6 @@ type Message struct {
 type MessageStore struct {
 	messages []Message
 	mutex    sync.RWMutex
-	mu       sync.Mutex
 	// TODO: Add more fields if needed
 }
 
@@ -33,9 +32,9 @@ func NewMessageStore() *MessageStore {
 
 // AddMessage stores a new message
 func (s *MessageStore) AddMessage(msg Message) error {
-	s.mu.Lock()
+	s.mutex.Lock()
 	s.messages = append(s.messages, msg)
-	s.mu.Unlock()
+	s.mutex.Unlock()
 
 	return nil
 }
