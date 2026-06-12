@@ -47,16 +47,42 @@ func (b *Broker) Run() {
 
 // SendMessage sends a message to the broker
 func (b *Broker) SendMessage(msg Message) error {
+	b.usersMutex.Lock()
+	b.input <- msg
+	b.usersMutex.Unlock()
 	// TODO: Send message to appropriate channel/queue
 	return nil
 }
 
 // RegisterUser adds a user to the broker
 func (b *Broker) RegisterUser(userID string, recv chan Message) {
-	// TODO: Register user and their receiving channel
+	b.usersMutex.RLock()
+	_, exist := b.users[userID]
+	b.usersMutex.RUnlock()
+
+	b.usersMutex.Lock()
+	defer b.usersMutex.Unlock()
+	if exist {
+		return
+	} else {
+		b.users[userID] = recv
+	}
 }
+
+// TODO: Register user and their receiving channel
 
 // UnregisterUser removes a user from the broker
 func (b *Broker) UnregisterUser(userID string) {
+	b.usersMutex.RLock()
+	_, exists := b.users[userID]
+	b.usersMutex.RUnlock()
+
+	if exists {
+		b.usersMutex.Lock()
+		delete(b.users, userID)
+		b.usersMutex.Unlock()
+	} else {
+		return
+	}
 	// TODO: Remove user from registry
 }
