@@ -1,7 +1,6 @@
 package message
 
 import (
-	"errors"
 	"sync"
 )
 
@@ -20,6 +19,7 @@ type Message struct {
 type MessageStore struct {
 	messages []Message
 	mutex    sync.RWMutex
+	mu       sync.Mutex
 	// TODO: Add more fields if needed
 }
 
@@ -33,12 +33,32 @@ func NewMessageStore() *MessageStore {
 
 // AddMessage stores a new message
 func (s *MessageStore) AddMessage(msg Message) error {
-	// TODO: Add message to storage (concurrent safe)
+	s.mu.Lock()
+	s.messages = append(s.messages, msg)
+	s.mu.Unlock()
+
 	return nil
 }
 
 // GetMessages retrieves messages (optionally by user)
 func (s *MessageStore) GetMessages(user string) ([]Message, error) {
-	// TODO: Retrieve messages (all or by user)
-	return nil, errors.New("not implemented")
+	s.mutex.RLock()
+	defer s.mutex.RUnlock()
+
+	lR := []Message{}
+
+	if user == "" {
+		for _, v := range s.messages {
+			lR = append(lR, v)
+		}
+
+		return lR, nil
+	}
+
+	for _, v := range s.messages {
+		if v.Sender == user {
+			lR = append(lR, v)
+		}
+	}
+	return lR, nil
 }
